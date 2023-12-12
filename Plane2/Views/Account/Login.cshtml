@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - Passengers Airline</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Passengers Airline</h1>
+        <nav>
+            <ul>
+                <li id="login-link"><a asp-action="Login" asp-controller="Account">Login</a></li>
+                <li><a asp-action="Index" asp-controller="Home">Home</a></li>
+                <li id="register-link"><a asp-action="Register" asp-controller="Account">Register</a></li>
+                <li id="logout-link" style="display: none;"><a asp-action="Logout" asp-controller="Account">Logout</a></li>
+                <!-- Add other links here -->
+            </ul>
+
+        </nav>
+    </header>
+    <div class="form-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" id="login-button">Login</button>
+            <p>Don't have an account? <a href="register.html">Register here</a></p>
+        </form>
+    </div>
+
+    <script>
+        // Predefined credentials
+        var credentials = [
+            { email: "admin", password: "admin" },
+            { email: "user1", password: "password1" },
+            // Add more credentials as needed
+        ];
+
+        function login(email, password) {
+            var isValidCredentials = credentials.some(function (cred) {
+                return cred.email === email && cred.password === password;
+            });
+
+            if (isValidCredentials) {
+                sessionStorage.setItem("isLoggedIn", "true");
+                alert("Login Successfully");
+                window.location.href = "home.html";
+            } else {
+                alert("Login failed. Please check your email and password.");
+            }
+        }
+
+        function logout() {
+            sessionStorage.removeItem("isLoggedIn");
+            alert("Logout Successfully");
+            window.location.reload();
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var isLoggedIn = sessionStorage.getItem("isLoggedIn");
+            var loginLink = document.getElementById("login-link");
+            var registerLink = document.getElementById("register-link");
+            var logoutLink = document.getElementById("logout-link");
+
+            if (isLoggedIn === "true") {
+                loginLink.style.display = "none";
+                registerLink.style.display = "none";
+                logoutLink.style.display = "block";
+            } else {
+                loginLink.style.display = "block";
+                registerLink.style.display = "block";
+                logoutLink.style.display = "none";
+            }
+
+            var loginForm = document.getElementById('loginForm');
+            loginForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+                var email = document.getElementById('email').value;
+                var password = document.getElementById('password').value;
+                login(email, password);
+            });
+
+            logoutLink.addEventListener('click', function(event) {
+                event.preventDefault();
+                logout();
+            });
+        });
+    </script>
+</body>
+</html>

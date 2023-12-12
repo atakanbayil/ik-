@@ -1,0 +1,184 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home - Passengers Airline</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to Passengers Airline</h1>
+        <nav>
+            <ul>
+                <li id="login-link"><a asp-action="Login" asp-controller="Account">Login</a></li>
+                <li><a asp-action="Index" asp-controller="Home">Home</a></li>
+                <li id="register-link"><a asp-action="Register" asp-controller="Account">Register</a></li>
+                <li id="logout-link" style="display: none;"><a asp-action="Logout" asp-controller="Account">Logout</a></li>
+                <!-- Add other links here -->
+            </ul>
+
+        </nav>
+    </header>
+    <div class="form-container">
+        <h2>Search Flights</h2>
+        <form id="searchForm" action="searchlist.html" method="get">
+            <div class="form-group autocomplete">
+                <label for="from-destination">From:</label>
+                <input type="text" id="from-destination" name="from-destination" required>
+                <div id="from-destination-list" class="autocomplete-items">
+                    <!-- Autocomplete results will be appended here -->
+                </div>
+            </div>
+
+            <div class="switch-direction">
+                <button type="button" aria-label="Switch direction">&#x2191;&#x2193;</button>
+            </div>
+
+            <div class="form-group autocomplete">
+                <label for="to-destination">To:</label>
+                <input type="text" id="to-destination" name="to-destination" required>
+                <div id="to-destination-list" class="autocomplete-items">
+                    <!-- Autocomplete results will be appended here -->
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="return-date">Travel Date:</label>
+                <input type="date" id="return-date" name="return-date">
+            </div>
+
+
+            <!-- You can add more fields like number of passengers, class of service, etc. -->
+            <div class="form-group">
+                <button type="submit" id="searchButton">Search</button>
+
+            </div>
+        </form>
+    </div>
+    
+</body>
+
+</html>
+<script>document.addEventListener("DOMContentLoaded", function () {
+        var switchButton = document.querySelector(".switch-direction button");
+        var fromInput = document.getElementById("from-destination");
+        var toInput = document.getElementById("to-destination");
+
+        switchButton.addEventListener("click", function () {
+            // Store the current values
+            var fromValue = fromInput.value;
+            var toValue = toInput.value;
+
+            // Swap the values
+            fromInput.value = toValue;
+            toInput.value = fromValue;
+        });
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+        var countries = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola"]; // Example data
+
+        function autocomplete(inp, arr) {
+            var currentFocus;
+            inp.addEventListener("input", function (e) {
+                var a, b, i, val = this.value;
+                closeAllLists();
+                if (!val) return false;
+                currentFocus = -1;
+                a = document.createElement("DIV");
+                a.setAttribute("id", this.id + "autocomplete-list");
+                a.setAttribute("class", "autocomplete-items");
+                this.parentNode.appendChild(a);
+                for (i = 0; i < arr.length; i++) {
+                    if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                        b = document.createElement("DIV");
+                        b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                        b.innerHTML += arr[i].substr(val.length);
+                        b.addEventListener("click", function (e) {
+                            inp.value = this.innerText;
+                            closeAllLists();
+                        });
+                        a.appendChild(b);
+                    }
+                }
+            });
+
+            function closeAllLists(elmnt) {
+                var x = document.getElementsByClassName("autocomplete-items");
+                for (var i = 0; i < x.length; i++) {
+                    if (elmnt != x[i] && elmnt != inp) {
+                        x[i].parentNode.removeChild(x[i]);
+                    }
+                }
+            }
+
+            document.addEventListener("click", function (e) {
+                closeAllLists(e.target);
+            });
+        }
+
+        autocomplete(document.getElementById("from-destination"), countries);
+        autocomplete(document.getElementById("to-destination"), countries);
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+        var returnDateInput = document.getElementById("return-date");
+        var formattedDate = document.getElementById("formatted-date");
+
+        // Get today's date in yyyy-mm-dd format
+        var today = new Date().toISOString().split('T')[0];
+
+        // Set the minimum date for the input field
+        returnDateInput.setAttribute("min", today);
+
+        returnDateInput.addEventListener("change", function () {
+            var selectedDate = new Date(returnDateInput.value);
+            var options = { year: 'numeric', month: 'long', day: 'numeric' };
+            var formatted = selectedDate.toLocaleDateString('en-US', options);
+            formattedDate.textContent = formatted;
+        });
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var searchButton = document.getElementById("searchButton");
+        var fromInput = document.getElementById("from-destination");
+        var toInput = document.getElementById("to-destination");
+        var returnDateInput = document.getElementById("return-date");
+
+        searchButton.addEventListener("click", function (e) {
+            if (
+                fromInput.value.trim() === "" ||
+                toInput.value.trim() === "" ||
+                returnDateInput.value.trim() === ""
+            ) {
+                e.preventDefault(); // Prevent the form from submitting
+                alert("Please fill in all the required fields before searching.");
+            }
+        });
+    });
+    function logout() {
+        sessionStorage.removeItem("isLoggedIn");
+        alert("Logout Successfully");
+        window.location.href = "login.html"; // Redirect to the login page after logout
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        // Check if user is logged in and adjust link visibility
+        var isLoggedIn = sessionStorage.getItem("isLoggedIn");
+        var loginLink = document.getElementById("login-link");
+        var registerLink = document.getElementById("register-link");
+        var logoutLink = document.getElementById("logout-link");
+
+        if (isLoggedIn === "true") {
+            loginLink.style.display = "none";
+            registerLink.style.display = "none";
+            logoutLink.style.display = "block";
+        } else {
+            loginLink.style.display = "block";
+            registerLink.style.display = "block";
+            logoutLink.style.display = "none";
+        }
+    });</script>

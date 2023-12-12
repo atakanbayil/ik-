@@ -1,0 +1,41 @@
+﻿<Properties StartupConfiguration="{44E5B3A3-F2E7-439A-AFC7-F45F08A29514}|https">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Plane2/Views/_ViewStart.cshtml">
+    <Files>
+      <File FileName="Plane2/Views/Home/Index.cshtml" Line="23" Column="1" />
+      <File FileName="Plane2/Views/_ViewImports.cshtml" Line="5" Column="1" />
+      <File FileName="Plane2/Views/_ViewStart.cshtml" Line="5" Column="1" />
+      <File FileName="Plane2/Views/Home/Privacy.cshtml" Line="1" Column="1" />
+      <File FileName="Plane2/Models/ErrorViewModel.cs" Line="1" Column="1" />
+      <File FileName="Plane2/Program.cs" Line="1" Column="1" />
+      <File FileName="Plane2/appsettings.Development.json" Line="1" Column="1" />
+      <File FileName="Plane2/appsettings.json" Line="1" Column="1" />
+      <File FileName="Plane2/Controllers/HomeController.cs" Line="1" Column="1" />
+      <File FileName="Plane2/Controllers/ProductController.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Plane2" expanded="True">
+            <Node name="Plane2" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Properties" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Home" expanded="True" />
+                <Node name="Shared" selected="True" />
+              </Node>
+              <Node name="appsettings.json" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Plane2 PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+</Properties>

@@ -1,0 +1,524 @@
+﻿/* General Body Styles */
+body {
+    padding-top: 150px;
+    /* Add top padding to the body to push content below the header */
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: #333;
+    /* Your background image */
+    background-image: url('navigationbar_background.jpg');
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Example for semi-transparent black background */
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    /* Ensure it's above other content */
+}
+
+
+
+/* Navigation Menu Styles */
+nav ul {
+    display: flex;
+    /* Make the list items horizontal */
+    justify-content: space-around;
+    /* Spread items evenly along the horizontal axis */
+    list-style: none;
+    padding: 0;
+}
+
+    nav ul li {
+        margin: 0 10px;
+    }
+
+
+        nav ul li a {
+            color: white;
+            /* or another color that contrasts well with your header background */
+        }
+
+            nav ul li a:hover {
+                text-decoration: underline;
+            }
+
+/* Main Content Styles */
+main {
+    padding: 150px;
+}
+
+/* Section Styles */
+section {
+    margin-bottom: 20px;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: black;
+    text-align: center;
+    padding: 0 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Form Container Styles */
+/* Assuming you have FontAwesome or similar for icons */
+/* Input icon styles */
+
+
+/* You would apply the 'input-icon' class to the parent div of the input field */
+
+
+/* Style for the switch-direction button */
+.switch-direction button {
+    background-color: whitesmoke;
+    /* Blue background */
+    border: 2px solid #ccc;
+    /* Grey border */
+    border-radius: 50%;
+    /* Circular button */
+    color: white;
+    /* Color of the arrows */
+    width: 40px;
+    /* Fixed width */
+    height: 40px;
+    /* Fixed height */
+    font-size: 24px;
+    /* Icon size */
+    cursor: pointer;
+    position: relative;
+    top: 50%;
+    /* Positioned in the middle of the parent container vertically */
+    left: 50%;
+    /* Positioned in the middle of the parent container horizontally */
+    transform: translate(-50%, -50%);
+    /* Offset the button by half its size */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:10px;
+}
+
+    /* Adjust the button's internal span for precise positioning if needed */
+    .switch-direction button span {
+        display: inline-block;
+        line-height: normal;
+        /* Reset line-height for span if needed */
+        vertical-align: middle;
+        /* Vertically center the inline-block */
+    }
+
+.switch-direction{
+    margin-top:10px;
+    align-content:center;
+    vertical-align:middle;
+    align-content:center;
+    height: 40px;
+}
+
+
+/* Adjust the form button style */
+button[type="submit"] {
+    background-color: #4CAF50;
+    /* Green background */
+    color: white;
+    /* White text */
+    padding: 12px 24px;
+    /* Larger padding */
+    font-size: 16px;
+    /* Larger font size */
+    border-radius: 4px;
+    /* Rounded corners */
+    border: none;
+    /* No border */
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /* Subtle shadow */
+}
+
+/* Adjust the layout for the form-container */
+.form-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: auto;
+    max-width: 500px;
+    margin: 0 auto;
+    /* Center the container */
+    position: relative;
+    /* Needed for absolute positioning of the switch button */
+}
+
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    border-radius: 5px;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+/* Style the date input */
+input[type="date"] {
+    height: 40px;
+    width: 100%;
+    /* Set width to 100% */
+    padding: 8px;
+    /* Adjust padding as needed */
+    box-sizing: border-box;
+    /* Ensure padding doesn't affect the width */
+    border: 1px solid #ddd;
+    /* Add a border for consistency */
+    border-radius: 5px;
+    /* Add rounded corners */
+    background-color: white;
+    /* Set background color */
+    outline: none;
+    /* Remove the default focus outline */
+    transition: border-color 0.3s;
+    /* Add a smooth transition for border color */
+}
+
+    /* Style the date input on focus */
+    input[type="date"]:focus {
+        height: 40px;
+        border-color: #0073e6;
+        /* Change border color on focus */
+    }
+
+button {
+    border-radius: 5px;
+    width: 100%;
+    padding: 10px;
+    background-color: #0073e6;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+p {
+    text-align: center;
+}
+
+.form-group.autocomplete {
+    position: relative;
+    height: 63px;
+}
+
+/* Additional styles for the autocomplete functionality */
+/* Autocomplete container which wraps the input field */
+.autocomplete {
+    height: 20%;
+    width: 100%;
+    position: relative;
+    display: block;
+    /* or flex depending on your layout */
+}
+
+/* Dropdown items container styling */
+.autocomplete-items {
+    position: absolute;
+    z-index: 99;
+    top: 100%;
+    /* Position directly below the input field */
+    left: 0;
+    right: 0;
+    max-height: 150px;
+    /* Set a max height for the dropdown */
+    overflow-y: auto;
+    /* Enable scrolling if there are many items */
+    background-color: #ffffff;
+}
+
+    .autocomplete-items div {
+        padding: 10px;
+        cursor: pointer;
+        background-color: #fff;
+        border-bottom: 1px solid #d4d4d4;
+    }
+
+        .autocomplete-items div:hover {
+            /* Styles for hovering over dropdown items */
+            background-color: #e9e9e9;
+        }
+
+.from-destination {
+    width: 100%;
+    padding: 15px 20px;
+    /* Adjust the padding to increase the height */
+    height: auto;
+    /* Allow the height to adjust based on content */
+}
+
+.to-destination {
+    width: 100%;
+    padding: 15px 20px;
+    /* Adjust the padding to increase the height */
+    height: auto;
+    /* Allow the height to adjust based on content */
+}
+
+/* Change the color of the arrows in the button */
+.switch-direction button {
+    color: red;
+    /* Change this to your desired color */
+}
+
+.check-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.accordion .accordion-item {
+    background-color: white;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    transition: 0.4s;
+    min-height: 75px;
+}
+
+
+
+
+.accordion .panel {
+    background-color: black;
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+
+/* ... Other styles ... */
+
+/* This will center the .accordion container on the screen */
+.accordion_outer {
+    display: flex;
+    justify-content: center;
+    /* Horizontally center the content */
+    align-items: center;
+    /* Vertically center the content (if you want full-screen centering) */
+    min-height: 100vh;
+    /* At least the full height of the viewport */
+    padding: 20px;
+    /* Add some padding around the accordion */
+    border-radius: 10px;
+}
+
+/* Ensures that the accordion itself does not stretch to fill the container */
+.accordion {
+    width: 100%;
+    /* Set a maximum width as per your design */
+    max-width: 70%;
+    /* Example max width */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Optional: adds shadow for better visibility */
+    border-radius: 10px;
+}
+
+    /* ... Other styles ... */
+
+
+    /* Accordion item styles */
+    .accordion .accordion-item {
+        border-radius: 10px;
+        margin: 20px 20px;
+        background-color: white;
+        color: #444;
+        cursor: pointer;
+        padding: 18px;
+        border: none;
+        text-align: left;
+        outline: none;
+        transition: 0.4s;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Accordion button styles */
+    .accordion .accordion-button {
+        background-color: #f4f4f4;
+        /* Adjust to match your design */
+        color: #333;
+        padding: 10px 15px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-family: Arial, sans-serif;
+        font-size: 1em;
+        display: flex;
+        justify-content: space-between;
+        /* This distributes the space around the button content */
+        align-items: center;
+    }
+
+        .accordion .accordion-button:after {
+            content: '\002B';
+            /* Plus sign */
+            font-size: 1.5em;
+        }
+
+        .accordion .accordion-button.active:after {
+            content: "\2212";
+            /* Minus sign */
+        }
+
+    /* Panel styles */
+    .accordion .panel {
+        padding: 0 18px;
+        background-color: #fff;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+    }
+
+/* ... Other styles ... */
+
+.flight-header {
+    display: flex;
+    justify-content: space-around;
+    /* This will distribute spacing evenly around all items */
+    align-items: center;
+    width: 100%;
+}
+
+/* Additional individual styles for each type of flight information */
+.airline-name,
+.flight-baggage,
+.flight-departure,
+.flight-duration,
+.flight-arrival,
+.flight-seats,
+.flight-price {
+    flex: 1;
+    /* This will allow each item to grow and take up equal space */
+    text-align: center;
+    /* Center the text in each flex item */
+    padding: 0 10px;
+    /* Optional: Add padding to each side of the items */
+}
+
+/* Ensure the price stands out and doesn't grow with flex */
+.flight-price {
+    flex: 0 0 auto;
+    color: #e74c3c;
+    font-weight: bold;
+    padding: 5px 10px;
+    border: 2px solid #e74c3c;
+    border-radius: 4px;
+    margin-left: auto;
+    /* Optional: To ensure it sticks to the right */
+}
+
+/* ... Other styles ... */
+.card-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Spacing between cards */
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 300px; /* Adjust width as needed */
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    padding: 10px;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.card-content {
+    flex: 1; /* Takes up the remaining space */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes footer to the bottom */
+}
+
+.card-details {
+    padding: 20px;
+    list-style-type: none;
+    margin: 0;
+}
+
+.card-footer {
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    margin-top: auto; /* Pushes itself to the bottom */
+}
+
+/* Colors for card headers and footers */
+.essentials {
+    background-color: #007bff; /* Blue */
+}
+
+.advantage {
+    background-color: #28a745; /* Green */
+}
+
+.comfort {
+    background-color: #ff9900; /* Orange */
+}
+
+/* Footer colors match header colors */
+.card .essentials + .card-footer {
+    background-color: #007bff; /* Blue */
+}
+
+.card .advantage + .card-footer {
+    background-color: #28a745; /* Green */
+}
+
+.card .comfort + .card-footer {
+    background-color: #ff9900; /* Orange */
+}
