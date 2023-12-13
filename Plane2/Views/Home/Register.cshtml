@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Register - Passengers Airline</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to Passengers Airline</h1>
+        <nav>
+            <ul>
+                <li id="login-link"><a asp-action="Login" asp-controller="Home">Login</a></li>
+                <li><a asp-action="Index" asp-controller="Home">Home</a></li>
+                <li id="register-link"><a asp-action="Register" asp-controller="Home">Register</a></li>
+                <li id="logout-link" style="display: none;"><a asp-action="Logout" asp-controller="Home">Logout</a></li>
+                <!-- Add other links here -->
+            </ul>
+
+
+        </nav>
+    </header>
+    <div class="form-container">
+        <h2>Register</h2>
+        <form id="registerForm" asp-action="Register" asp-controller="Home" method="post">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="surname">Surname:</label>
+                <input type="text" id="surname" name="surname" required>
+                <div class="check-group">
+                    <label>Gender:</label>
+                    <label for="male">Male</label>
+                    <input type="checkbox" id="male" name="gender" value="male">
+
+                    <label for="female">Female</label>
+                    <input type="checkbox" id="female" name="gender" value="female">
+                </div>
+
+
+
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+            </div>
+            <button type="submit">Register</button>
+            <p>Already have an account? <a asp-action="Login" asp-controller="Home">Login here</a></p>
+        </form>
+    </div>
+</body>
+
+</html>
+<script>function onlyOneCheckbox(checkbox) {
+        var checkboxes = document.getElementsByName('gender');
+        checkboxes.forEach((item) => {
+            if (item !== checkbox) item.checked = false;
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var registerForm = document.getElementById('registerForm');
+        var genderCheckboxes = document.getElementsByName('gender');
+        genderCheckboxes.forEach(checkbox => {
+            checkbox.onclick = function () { onlyOneCheckbox(this); };
+        });
+
+        registerForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            var name = document.getElementById('name').value;
+            var surname = document.getElementById('surname').value;
+            var genderSelected = Array.from(genderCheckboxes).find(checkbox => checkbox.checked)?.value;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirm-password').value;
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+                return;
+            }
+
+            // Add here the code to handle the form submission
+            // For now, we just log the collected data (excluding passwords for security)
+            console.log('Registering user:', name, surname, genderSelected, email);
+        });
+    });</script>

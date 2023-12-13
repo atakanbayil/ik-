@@ -112,7 +112,6 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top:10px;
 }
 
     /* Adjust the button's internal span for precise positioning if needed */
@@ -124,11 +123,9 @@ footer {
         /* Vertically center the inline-block */
     }
 
-.switch-direction{
-    margin-top:10px;
-    align-content:center;
-    vertical-align:middle;
-    align-content:center;
+.switch-direction {
+    margin-top: 30px;
+    display: flex;
     height: 40px;
 }
 
@@ -361,23 +358,11 @@ p {
 
 
     /* Accordion item styles */
-    .accordion .accordion-item {
-        border-radius: 10px;
-        margin: 20px 20px;
-        background-color: white;
-        color: #444;
-        cursor: pointer;
-        padding: 18px;
-        border: none;
-        text-align: left;
-        outline: none;
-        transition: 0.4s;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    }
+
 
     /* Accordion button styles */
     .accordion .accordion-button {
-        background-color: #f4f4f4;
+        background-color: white;
         /* Adjust to match your design */
         color: #333;
         padding: 10px 15px;
@@ -393,27 +378,31 @@ p {
         align-items: center;
     }
 
-        .accordion .accordion-button:after {
-            content: '\002B';
-            /* Plus sign */
-            font-size: 1.5em;
-        }
+.accordion-button:not(.collapsed)::after {
+    transform: rotate(0deg);
+    margin-left: 10px;
+    color: black;
+    background-image: none;
+    content: "\2B07";
+}
+.accordion-button.collapsed::after {
+    content: "\2191"; /* Unicode for up-pointing arrow */
+    /* Other styles */
+}
+.accordion-button.active {
+    background-color: #0c63e4;
+    color: #fff;
+}
 
-        .accordion .accordion-button.active:after {
-            content: "\2212";
-            /* Minus sign */
-        }
 
-    /* Panel styles */
-    .accordion .panel {
-        padding: 0 18px;
-        background-color: #fff;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.2s ease-out;
-    }
+.accordion .panel {
+    padding: 0 18px;
+    background-color: #fff;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
 
-/* ... Other styles ... */
 
 .flight-header {
     display: flex;
@@ -423,7 +412,6 @@ p {
     width: 100%;
 }
 
-/* Additional individual styles for each type of flight information */
 .airline-name,
 .flight-baggage,
 .flight-departure,
@@ -432,14 +420,10 @@ p {
 .flight-seats,
 .flight-price {
     flex: 1;
-    /* This will allow each item to grow and take up equal space */
     text-align: center;
-    /* Center the text in each flex item */
     padding: 0 10px;
-    /* Optional: Add padding to each side of the items */
 }
 
-/* Ensure the price stands out and doesn't grow with flex */
 .flight-price {
     flex: 0 0 auto;
     color: #e74c3c;
@@ -448,10 +432,8 @@ p {
     border: 2px solid #e74c3c;
     border-radius: 4px;
     margin-left: auto;
-    /* Optional: To ensure it sticks to the right */
 }
 
-/* ... Other styles ... */
 .card-container {
     display: flex;
     justify-content: center;
@@ -493,7 +475,7 @@ p {
     padding: 10px;
     text-align: center;
     font-weight: bold;
-    color: #fff;
+    color: black;
     margin-top: auto; /* Pushes itself to the bottom */
 }
 
@@ -521,4 +503,14 @@ p {
 
 .card .comfort + .card-footer {
     background-color: #ff9900; /* Orange */
+}
+.alert {
+    padding: 10px;
+    background-color: #f44336; /* Red */
+    color: white;
+    margin-bottom: 15px;
+}
+
+.alert-success {
+    background-color: #4CAF50; /* Green */
 }

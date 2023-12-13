@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Flight Details Accordion</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Search Results</h1>
+        <nav>
+            <ul>
+                <li id="login-link"><a asp-action="Login" asp-controller="Home">Login</a></li>
+                <li><a asp-action="Index" asp-controller="Home">Home</a></li>
+                <li id="register-link"><a asp-action="Register" asp-controller="Home">Register</a></li>
+                <li id="logout-link" style="display: none;"><a asp-action="Logout" asp-controller="Home">Logout</a></li>
+                <!-- Add other links here -->
+            </ul>
+
+        </nav>
+    </header>
+    <div class="accordion_outer">
+        <div class="accordion">
+            <!-- Accordion items will be inserted here by JavaScript -->
+        </div>
+    </div>
+    <script>document.addEventListener('DOMContentLoaded', function () {
+            const accordionContainer = document.querySelector('.accordion');
+
+            for (let i = 0; i < 20; i++) {
+                accordionContainer.appendChild(createAccordionItem(i));
+            }
+        });
+
+        function createAccordionItem(index) {
+            const item = document.createElement('div');
+            item.className = 'accordion-item';
+
+            const button = document.createElement('button');
+            button.className = 'accordion-button';
+            button.innerHTML = `
+            <div class="flight-header">
+                <span class="airline-name">Pegasus Airlines</span>
+                <span class="flight-baggage">Baggage: 15 kg</span>
+                <span class="flight-departure">06:10</span>
+                <span class="flight-duration">1hr 10min</span>
+                <span class="flight-arrival">07:20</span>
+                <span class="flight-seats">Last 3 Seats</span>
+                <span class="flight-price">TL 529.99</span>
+            </div>
+        `;
+            button.addEventListener('click', function () {
+                toggleAccordion(this);
+            });
+
+            const panel = document.createElement('div');
+            panel.className = 'panel';
+            panel.innerHTML = `
+            <p>Flight details for flight number ${index + 1}</p>
+            <div class="card-container">
+        <!-- Essentials Card -->
+        <div class="card">
+            <div class="card-header essentials">
+                Essentials (EK)
+            </div>
+            <div class="card-content">
+                <ul class="card-details">
+                    <li>Baggage: 15 kg</li>
+                    <li>Baggage Cabin: 8 kg</li>
+                    <li>Free Seat Selection: No</li>
+                </ul>
+                <div class="card-footer">
+                    TL 529.99 >>
+                </div>
+            </div>
+        </div>
+
+        <!-- Advantage Card -->
+        <div class="card">
+            <div class="card-header advantage">
+                Advantage (AI)
+            </div>
+            <div class="card-content">
+                <ul class="card-details">
+                    <li>Baggage: 20 kg</li>
+                    <li>Baggage Cabin: 8 kg</li>
+                    <li>Free Seat Selection: Yes</li>
+                    <li>Sandwich</li>
+                    <li>In-Flight Entertainment</li>
+                </ul>
+                <div class="card-footer">
+                    TL 859.99 >>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comfort Flex Card -->
+        <div class="card">
+            <div class="card-header comfort">
+                Comfort Flex (CO)
+            </div>
+            <div class="card-content">
+                <ul class="card-details">
+                    <li>Baggage: 20 kg</li>
+                    <li>Baggage Cabin: 12 kg</li>
+                    <li>Free Seat Selection: Yes</li>
+                    <li>Sandwich</li>
+                    <li>In-Flight Entertainment</li>
+                    <li>Free Change</li>
+                    <li>Full Refund</li>
+                </ul>
+                <div class="card-footer">
+                    TL 929.99 >>
+                </div>
+            </div>
+        </div>
+</div>
+
+
+        `;
+
+            item.appendChild(button);
+            item.appendChild(panel);
+
+            return item;
+        }
+
+
+        function toggleAccordion(button) {
+            const panel = button.nextElementSibling;
+            const isActive = button.classList.contains('active');
+
+            // Collapse any currently active panel
+            const allPanels = document.querySelectorAll('.panel');
+            const allButtons = document.querySelectorAll('.accordion-button');
+            allButtons.forEach(btn => btn.classList.remove('active'));
+            allPanels.forEach(pnl => pnl.style.maxHeight = null);
+
+            // Now, if the clicked panel was not previously active, expand it
+            if (!isActive) {
+                button.classList.add('active');
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        }</script>
+</body>
+
+</html>
